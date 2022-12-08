@@ -1,0 +1,26 @@
+.buttons i {
+  cursor: pointer;
+  font-size: 50px;
+}
+body {
+  line-height: 2 !important;
+}
+
+.main {
+  width: 100% !important;
+}
+
+.form-control-inline {
+  min-width: 0;
+  width: auto;
+  display: inline;
+  margin: 1px;
+}
+
+.thumb {
+  font-size: 50px !important;
+}
+
+.btn {
+  border-radius: 30px !important;
+}
