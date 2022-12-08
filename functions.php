@@ -63,12 +63,7 @@ class Functions
         }
 
         $json = json_encode($json, true);
-
-        if (file_put_contents($fileName, $json) !== false) {
-            return $post['id'];
-        } else {
-            return 0;
-        }
+        return file_put_contents($fileName, $json) !== false ? $post['id'] : false;
     }
     public static function deleteFromJson(&$jsonData, $id, $fileName)
     {
@@ -100,19 +95,7 @@ class Functions
     }
     private static function unsetData(&$data)
     {
-        foreach (self::$unsetTypes[$data['invoiceType']] as $type) {
-            unset($data[$type]);
-        }
-        unset(
-            $data['invoiceTypes'],
-            $data['edit'],
-            $data['function'],
-            $data['response'],
-            $data['name'],
-            $data['email'],
-            $data['telephone'],
-            $data['emails'],
-            $data['pdfURI']
-        );
+        $unsets = self::$unsetTypes[$data['invoiceType']] + ['invoiceTypes','edit','function','response','name','email','telephone','emails','pdfURI'];
+        foreach ($unsets as $type) unset($data[$type]);
     }
 }

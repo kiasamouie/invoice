@@ -1,8 +1,8 @@
-function setCookie (name, value, days) {
+function setCookie(name, value, days) {
   var expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT'
   document.cookie = name + '=' + (value || '') + expires + '; path=/'
 }
-function getCookie (name) {
+function getCookie(name) {
   var nameEQ = name + '='
   var ca = document.cookie.split(';')
   for (var i = 0; i < ca.length; i++) {
@@ -12,22 +12,22 @@ function getCookie (name) {
   }
   return null
 }
-function eraseCookie (name) {
+function eraseCookie(name) {
   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
 }
 
-function unique (array) {
+function unique(array) {
   return $.grep(array, function (el, index) {
     return index === $.inArray(el, array)
   })
 }
 
-function convertTitle (text) {
+function convertTitle(text) {
   const result = text.replace(/([A-Z])/g, ' $1')
   return result.charAt(0).toUpperCase() + result.slice(1)
 }
 
-function createPDF (fileName, invoiceNo) {
+function createPDF(fileName, invoiceNo) {
   const element = document.querySelector('body')
   const opt = {
     filename: fileName,
@@ -41,6 +41,6 @@ function createPDF (fileName, invoiceNo) {
     .set(opt)
 }
 
-function capitalize (string) {
+function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }

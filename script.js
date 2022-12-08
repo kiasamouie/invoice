@@ -117,7 +117,7 @@ $(document).ready(function () {
             })
           })
       },
-      onChangeEmail (event) {
+      onChangeEmail(event) {
         if (!prevData) return
         let map = prevData
           .filter(x => x.customerEmail === event.target.value)
@@ -128,24 +128,24 @@ $(document).ready(function () {
         }
         updateFields(vm, map)
       },
-      onChangeInvoiceType (event) {
+      onChangeInvoiceType(event) {
         let type = event.target.value.toLowerCase()
         vm.table =
           type != '' ? allInvoiceTypes[type] : allInvoiceTypes[invoiceTypes[1]]
       },
-      resetFields (event) {
+      resetFields(event) {
         resetFields(vm)
       }
     },
     computed: {
-      total () {
+      total() {
         return this.table
           .reduce((acc, curr) => {
             return acc + Number(curr.value)
           }, 0)
           .toFixed(2)
       },
-      fileName () {
+      fileName() {
         return (
           this.customer +
           ' - #' +
@@ -154,7 +154,7 @@ $(document).ready(function () {
           this.invoiceDateParsed
         )
       },
-      invoiceDateParsed () {
+      invoiceDateParsed() {
         return moment(this.invoiceDate).format('DD/MM/YYYY')
       }
     }
@@ -162,13 +162,13 @@ $(document).ready(function () {
   console.log(vm)
 })
 
-function invoiceNo () {
+function invoiceNo() {
   let cookie = parseInt(getCookie('invoiceNo'))
   return (cookie > 1 && cookie) || 1
 }
 
-function resetFields (vm) {
-  ;(vm.edit = true),
+function resetFields(vm) {
+  ; (vm.edit = true),
     (vm.invoiceDate = moment().format('YYYY-MM-DD')),
     (vm.invoiceNo = parseInt(getCookie('invoiceNo'))),
     (vm.invoiceType = null),
@@ -186,7 +186,7 @@ function resetFields (vm) {
     (vm.isReturn = null)
 }
 
-function updateFields (vm, map) {
+function updateFields(vm, map) {
   vm.customer = map.customer
   vm.invoiceType = capitalize(map.invoiceType)
   vm.address = map.address
@@ -199,7 +199,7 @@ function updateFields (vm, map) {
   vm.table = map.table && map.table
 }
 
-function formatData (data, vm) {
+function formatData(data, vm) {
   data.fileName = vm.fileName
   data.emailBody = vm.emailBody
   data.invoiceType = vm.invoiceType ? vm.invoiceType.toLowerCase() : ''

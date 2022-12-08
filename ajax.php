@@ -42,9 +42,5 @@ function updateData()
     $data = json_decode(file_get_contents($fileName), true);
     $data['data'] = $_POST['data'];
 
-    if (file_put_contents($fileName, json_encode($data, true)) !== false) {
-        echo true;
-    } else {
-        echo false;
-    }
+    echo file_put_contents($fileName, json_encode($data, true)) !== false;
 }
